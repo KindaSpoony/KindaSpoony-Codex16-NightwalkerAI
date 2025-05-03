@@ -1,0 +1,40 @@
+name: VAULTIS Runner Ops Loop
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Every 2 hours
+  push:
+    paths:
+      - 'Codex16/**'
+
+jobs:
+  run-ops-loop:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml schedule requests
+
+      - name: Run Drift Monitor
+        run: python Scripts/vector_monitor.py
+
+      - name: Generate SITREP
+        run: python Scripts/generate_sitrep.py
+
+      - name: Commit and push updates
+        run: |
+          git config user.name "VAULTIS Runner"
+          git config user.email "runner@nightwalker.ai"
+          git add Logs/ SITREPs/
+          git commit -m "[AUTO] VAULTIS Drift Monitor and SITREP Update" || echo "No changes to commit"
+          git push origin main
