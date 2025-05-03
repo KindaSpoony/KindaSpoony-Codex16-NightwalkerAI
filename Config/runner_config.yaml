@@ -1,24 +1,5 @@
-deployment_environment: local
-vector_framework:
-  model: local_static
-  store: json
-  codex_source: "Codex16"
-github:
-  repo: "KindaSpoony/KindaSpoony-Codex16-NightwalkerAI"
-  auto_commit_paths:
-    - "/SITREPs/"
-    - "/Logs/"
-  auto_pr_paths:
-    - "/Public/"
-    - "/System/"
-operational_loop:
-  interval_seconds: 7200  # 2 hours
-monitoring:
-  cli_logs: true
-  markdown_feed: true
-  webhook_enabled: false
-metadata:
-  fleet_id: "vaultis-fleet-alpha"
-  runner_id: "vaultis-runner-001"
-  role: "maintainer"
-  created: "2025-05-03T11:31:00-07:00"
+deployment_environment: local 
+vector_framework: 
+  model: local_static 
+  store: json 
+  codex_source: "Codex16" 
