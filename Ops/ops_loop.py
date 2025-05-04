@@ -87,4 +87,8 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         logger.info("Operations loop terminated by user")
     except Exception as e:
+<<<<<<< HEAD
         logger.error(f"Operations loop crashed: {e}")
+=======
+        logger.error(f"Operations loop crashed: {e}")
+>>>>>>> 6e4424e5772cdda464a06ddcaea903cd18b37390
