@@ -1,1 +1,5 @@
-deployment_environment: localvector_framework:  model: local_static  store: json  codex_source: "Codex16"
+deployment_environment: local
+vector_framework:
+  model: local_static
+  store: json
+  codex_source: "Codex16"
