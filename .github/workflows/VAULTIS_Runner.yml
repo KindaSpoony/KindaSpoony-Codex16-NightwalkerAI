@@ -27,17 +27,15 @@ jobs:
 
       - name: Run Drift Monitor
         run: python Scripts/vector_monitor.py
-        working-directory: ${{ github.workspace }}
 
       - name: Generate SITREP
         run: python Scripts/generate_sitrep.py
-        working-directory: ${{ github.workspace }}
 
       - name: Commit and push updates
         run: |
           git config user.name "VAULTIS Runner"
           git config user.email "runner@nightwalker.ai"
-          git pull origin main --allow-unrelated-histories # Added git pull
+          git pull origin main --allow-unrelated-histories # Added this line
           git add Logs/ SITREPs/
           git commit -m "[AUTO] VAULTIS Drift Monitor and SITREP Update" || echo "No changes to commit"
           git push origin main
